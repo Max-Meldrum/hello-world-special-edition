@@ -38,8 +38,14 @@ command -v ruby >/dev/null 2>&1 || { echo >&2 "ruby is required, aborting."; exi
 command -v go >/dev/null 2>&1 || { echo >&2 "go is required, aborting."; exit 1; }
 #command -v ocaml >/dev/null 2>&1 || { echo >&2 "ocaml is required, aborting."; exit 1; }
 
+
+
+# Compiling if needed
+javac -d src/java/ src/java/HelloWorld.java
+# gcc...
+
 #LANGS=("python" "ruby" "c" "java" "lua" "go" "scala" "asm")
-LANGS=("python" "c" "java")
+LANGS=("python" "java")
 
 HELLO_WORLD_SIZE=12
 declare -a CHOSEN=()

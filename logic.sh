@@ -1,9 +1,10 @@
 #!/bin/bash
 
+
 ## $1 Lang, $2 pos, $3 next-langs
 case "$1" in
     java)
-        echo "$2"
+        java -cp src/java/ HelloWorld "$2" "$3"
         ;;
     c)
         echo "$2"
