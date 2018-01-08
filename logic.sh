@@ -7,7 +7,7 @@ case "$1" in
         java -cp src/java/ HelloWorld "$2" "$3"
         ;;
     c)
-        echo "$2"
+        ./src/c/hello_world $2 "$3"
         ;;
     python)
         python src/python/hello_world.py "$2" "$3"
