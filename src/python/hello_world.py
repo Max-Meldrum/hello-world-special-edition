@@ -1,3 +1,4 @@
+from __future__ import print_function # needs to be first statement in file
 import sys
 import subprocess
 
@@ -10,34 +11,41 @@ else:
 
 
 if pos == 0:
-    print "H"
+    print("H", end='')
 elif pos == 1:
-    print "e"
+    print("e", end='')
 elif pos == 2:
-    print "l"
+    print("l", end='')
 elif pos == 3:
-    print "l"
+    print("l", end='')
 elif pos == 4:
-    print "o"
+    print("o", end='')
 elif pos == 5:
-    print " "
+    print(" ", end='')
 elif pos == 6:
-    print "W"
+    print("W", end='')
 elif pos == 7:
-    print "o"
+    print("o", end='')
 elif pos == 8:
-    print "r"
+    print("r", end='')
 elif pos == 9:
-    print "l"
+    print("l", end='')
 elif pos == 10:
-    print "d"
+    print("d", end='')
 elif pos == 11:
-    print "!"
+    print("!", end='')
 elif pos == 12:
-    print "\n"
+    print("\n", end='')
+
+sys.stdout.flush()
+
 
 if pos >= 0 and pos < 12:
-    target_lang, next_langs = langs.split(" ", 1)
-    subprocess.call(["./logic.sh", str(target_lang), str(pos+1), str(next_langs)], shell=True)
+    if pos == 10 or pos == 11:
+        target_lang = langs
+        subprocess.call(["./logic.sh", str(target_lang), str(pos+1), str(langs)])
+    else:
+        target_lang, next_langs = langs.split(" ", 1)
+        subprocess.call(["./logic.sh", str(target_lang), str(pos+1), str(next_langs)])
 
 
