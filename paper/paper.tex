@@ -7,6 +7,13 @@
 \usepackage{times}
 \usepackage{url}
 \usepackage{latexsym}
+\usepackage{natbib}
+
+
+\usepackage[noend]{algpseudocode}
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage{pifont}
 
 %\setlength\titlebox{5cm}
 
@@ -23,23 +30,42 @@
 Second Author \\
 {\tt email@domain} \\}
 
+
+\makeatletter
+\def\BState{\State\hskip-\ALG@thistlm}
+\makeatother
+
 \date{}
 
 \begin{document}
 \maketitle
 \begin{abstract}
-Since being introduced in the book "The C Programming Language", Hello World has become the typical way of how people are introduced to the world of programming. We observe that the classical approach is conservative, all characters are displayed solely through one programming language. In this paper, we propose an improved version which allows new developers to get introduced to several languages at once.
+Since being introduced in the book "The C Programming Language", Hello World has become the typical way of how people are introduced to the world of programming. We observe that the classical approach is conservative, all characters are displayed solely through one programming language. In this paper, we propose an improved version which allows new developers to run Hello World with multiple languages.
 \end{abstract}
 
 \section{Introduction}
-
+Instructing the computer to display text on the screen is the most common first program that any developer will encounter. The concept of Hello World became popular through\cite{Kernighan:1988:CPL:576122}. 
 
 \section{Algorithm}
+In our implementation, we have opted to go for "Hello World!" instead of "Hello, World!". In total, including the white space, we have 12 characters. Any number of languages is supported, as long it is able to compile on the target computer. It is not guaranteed that the 12 selected languages are unique, the algorithm will pick randomly from a basket.
+\begin{algorithm}
+\caption{Initialization Phase}
+\label{Special Edition}
+\begin{algorithmic}[1]
+\Procedure{GenerateLanguages}{}
+\State $N\gets 12$
+\State $L\gets Languages$
+\For{$N$ iterations}
+	\State $S\gets Random(L)$
+\EndFor
+\State \textbf{return} S
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
 
 \subsection{Controller}
 
 \subsection{Executor}
-
 
 
 \section{Future Work}
@@ -51,42 +77,8 @@ The acknowledgments should go immediately before the references.  Do
 not number the acknowledgments section. Do not include this section
 when submitting your paper for review.
 
-% include your own bib file like this:
-%\bibliographystyle{acl}
-%\bibliography{acl2015}
 
-\begin{thebibliography}{}
-
-\bibitem[\protect\citename{Aho and Ullman}1972]{Aho:72}
-Alfred~V. Aho and Jeffrey~D. Ullman.
-\newblock 1972.
-\newblock {\em The Theory of Parsing, Translation and Compiling}, volume~1.
-\newblock Prentice-{Hall}, Englewood Cliffs, NJ.
-
-\bibitem[\protect\citename{{American Psychological Association}}1983]{APA:83}
-{American Psychological Association}.
-\newblock 1983.
-\newblock {\em Publications Manual}.
-\newblock American Psychological Association, Washington, DC.
-
-\bibitem[\protect\citename{{Association for Computing Machinery}}1983]{ACM:83}
-{Association for Computing Machinery}.
-\newblock 1983.
-\newblock {\em Computing Reviews}, 24(11):503--512.
-
-\bibitem[\protect\citename{Chandra \bgroup et al.\egroup }1981]{Chandra:81}
-Ashok~K. Chandra, Dexter~C. Kozen, and Larry~J. Stockmeyer.
-\newblock 1981.
-\newblock Alternation.
-\newblock {\em Journal of the Association for Computing Machinery},
-28(1):114--133.
-
-\bibitem[\protect\citename{Gusfield}1997]{Gusfield:97}
-Dan Gusfield.
-\newblock 1997.
-\newblock {\em Algorithms on Strings, Trees and Sequences}.
-\newblock Cambridge University Press, Cambridge, UK.
-
-\end{thebibliography}
+\bibliography{references}
+\bibliographystyle{unsrt}
 
 \end{document}
