@@ -64,14 +64,35 @@ In our implementation, we have opted to go for "Hello World!" instead of "Hello,
 \end{algorithm}
 
 \subsection{Executor}
-The Executor program has two tasks. PartialPrint and NotifyController. The former checks if the given character position is valid, if it is, it then prints the character that corresponds to the position. The latter reviews the current position and decides whether to pass on the task to the next Executor in line or exit the system.
+The Executor program has two tasks. PartialPrint and Notify. The former checks if the given character position is valid, if it is, it then prints the character that corresponds to the position. The latter reviews the current position and decides whether to pass on the task to the next Executor in line or exit the system.
 
 \begin{algorithm}
 \caption{Executor System}
 \label{Special Edition}
 \begin{algorithmic}[2]
 \Procedure{PartialPrint(pos, nlangs)}{}
-%\If{<condition>} <text> \ElsIf{<condition>} <text> \Else <text> \EndIf
+\If{pos == 0} print "H"
+\ElsIf{pos == 1} print "e"
+\ElsIf{pos == 2} print "l" 
+\ElsIf{pos == 3} print "l"
+\ElsIf{pos == 4} print "o"
+\ElsIf{pos == 5} print " "
+\ElsIf{pos == 6} print "W"
+\ElsIf{pos == 7} print "o"
+\ElsIf{pos == 8} print "r"
+\ElsIf{pos == 9} print "l" 
+\ElsIf{pos == 10} print "d"
+\ElsIf{pos == 11} print "!"
+\ElsIf{pos == 12} print "\texttt{\char`\\n}"
+\EndIf
+\EndProcedure
+
+\Procedure{Notify(pos, nlangs)}{}
+\If{pos \texttt{\char`\>=} 0 and pos \texttt{\char`\<} 12} \State $target\gets nlangs.head$
+\Else {    return 0}
+\EndIf
+\State $executors\gets nlangs.dropHead$
+\State Controller(target,  pos+1, executors)
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
