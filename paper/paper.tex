@@ -40,7 +40,7 @@ Second Author \\
 \begin{document}
 \maketitle
 \begin{abstract}
-Since being introduced in the book "The C Programming Language", Hello World has become the typical way of how people are introduced to the world of programming. We observe that the classical approach is conservative, all characters are displayed solely through one programming language. In this paper, we propose an improved version which allows new developers to run Hello World with multiple languages.
+Since being introduced in the book "The C Programming Language", Hello World has become the typical way of how people are introduced to the world of programming. We observe that the classical approach is conservative, all characters are displayed solely through one programming language. In this paper, we propose an improved version which enables the execution to transpire through multiple languages.
 \end{abstract}
 
 \section{Introduction}
@@ -63,19 +63,30 @@ In our implementation, we have opted to go for "Hello World!" instead of "Hello,
 \end{algorithmic}
 \end{algorithm}
 
-\subsection{Controller}
-
 \subsection{Executor}
+The Executor program has two tasks. PartialPrint and NotifyController. The former checks if the given character position is valid, if it is, it then prints the character that corresponds to the position. The latter reviews the current position and decides whether to pass on the task to the next Executor in line or exit the system.
 
+\begin{algorithm}
+\caption{Executor System}
+\label{Special Edition}
+\begin{algorithmic}[2]
+\Procedure{PartialPrint(pos, nlangs)}{}
+%\If{<condition>} <text> \ElsIf{<condition>} <text> \Else <text> \EndIf
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+\subsection{Controller}
+The controller acts as a bridge between Executor's. After an Executor has printed a character, it notifies the controller of the next target language, position and the list that contains the Executor order.
+
+
+\section{Evaluation}
 
 \section{Future Work}
 
+\section{Conclusion}
 
 \section*{Acknowledgments}
-
-The acknowledgments should go immediately before the references.  Do
-not number the acknowledgments section. Do not include this section
-when submitting your paper for review.
 
 
 \bibliography{references}
