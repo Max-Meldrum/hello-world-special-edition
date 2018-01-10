@@ -3,7 +3,7 @@ import java.util.*;
 import java.nio.file.Paths;
 
 
-public class HelloWorld {
+public class Executor {
     public static void main(String[] args) {
         Integer pos = -1;
         String langs = "";
@@ -59,7 +59,7 @@ public class HelloWorld {
 
             try {
                 // does not work...
-                //String[] cmd = {"logic.sh", targetLang, String.valueOf(pos+1), nextLangs};
+                //String[] cmd = {"controller.sh", targetLang, String.valueOf(pos+1), nextLangs};
                 //Process p = Runtime.getRuntime().exec(cmd);
             } catch (Exception e) {
                 e.printStackTrace();

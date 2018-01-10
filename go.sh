@@ -41,12 +41,11 @@ command -v go >/dev/null 2>&1 || { echo >&2 "go is required, aborting."; exit 1;
 
 
 # Compiling if needed
-javac -d src/java/ src/java/HelloWorld.java
-gcc src/c/hello_world.c -o src/c/hello_world
+javac -d src/java/ src/java/Executor.java
+gcc src/c/executor.c -o src/c/executor
 # gcc...
 
 #LANGS=("python" "ruby" "c" "java" "lua" "go" "scala" "asm")
-#LANGS=("python" "java")
 LANGS=("c" "python")
 
 HELLO_WORLD_SIZE=12
@@ -64,4 +63,4 @@ LIST=$(echo $ALL| awk '{$1="";print $0}' | awk '{$1=$1};1')
 
 echo "Executing in the order:" $ALL
 # target-lang, pos, next-target-langs
-./logic.sh "$FIRST" 0 "$LIST"
+./controller.sh "$FIRST" 0 "$LIST"

@@ -43,9 +43,9 @@ sys.stdout.flush()
 if pos >= 0 and pos < 12:
     if pos == 10 or pos == 11:
         target_lang = langs
-        subprocess.call(["./logic.sh", str(target_lang), str(pos+1), str(langs)])
+        subprocess.call(["./controller.sh", str(target_lang), str(pos+1), str(langs)])
     else:
         target_lang, next_langs = langs.split(" ", 1)
-        subprocess.call(["./logic.sh", str(target_lang), str(pos+1), str(next_langs)])
+        subprocess.call(["./controller.sh", str(target_lang), str(pos+1), str(next_langs)])
 
 

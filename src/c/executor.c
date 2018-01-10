@@ -55,7 +55,7 @@ int main(int argc, char *argv[]) {
             strcpy(lLang, "\'");
             strcat(lLang, langs);
             strcat(lLang, "\'");
-            sprintf(cmd, "./logic.sh %s %d %s", lLang, pos+1, lLang);
+            sprintf(cmd, "./controller.sh %s %d %s", lLang, pos+1, lLang);
             system(cmd);
         } else {
             // Get next target lang and execute logic.sh
@@ -78,7 +78,7 @@ int main(int argc, char *argv[]) {
             }
             strcat(nextLangs, "\'");
             char cmd[100];
-            sprintf(cmd, "./logic.sh %s %d %s", targetLang, pos+1, nextLangs);
+            sprintf(cmd, "./controller.sh %s %d %s", targetLang, pos+1, nextLangs);
             system(cmd);
         }
 	}
