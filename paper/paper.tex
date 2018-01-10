@@ -44,7 +44,9 @@ Since being introduced in the book "The C Programming Language", Hello World has
 \end{abstract}
 
 \section{Introduction}
-Instructing the computer to display text on the screen is the most common first program that any developer will encounter. The concept of Hello World became popular through\cite{Kernighan:1988:CPL:576122}. 
+Instructing the computer to display text on the screen is the most common first program that any developer will encounter. The concept of Hello World became popular through\cite{Kernighan:1988:CPL:576122}. Many years has past since its introduction, and still there has not been any further research into the language exposure aspect of Hello World.
+\newline{}\newline{}
+In section 2, the special edition algorithm is explained in detail. Section 3 dissects the performance and language exposure. In section 4, we discuss the possibilities of next gen Hello World programs. In Section 5, we draw our conclusion.
 
 \section{Algorithm}
 In our implementation, we have opted to go for "Hello World!" instead of "Hello, World!". In total, including the white space, we have 12 characters. Any number of languages is supported, as long it is able to compile on the target computer. It is not guaranteed that the 12 selected languages are unique, the algorithm will pick randomly from a basket.
@@ -67,38 +69,72 @@ In our implementation, we have opted to go for "Hello World!" instead of "Hello,
 The Executor program has two tasks. PartialPrint and Notify. The former checks if the given character position is valid, if it is, it then prints the character that corresponds to the position. The latter reviews the current position and decides whether to pass on the task to the next Executor in line or exit the system.
 
 \begin{algorithm}
-\caption{Executor System}
+\caption{Executor Algorithm PP}
 \label{Special Edition}
 \begin{algorithmic}[2]
 \Procedure{PartialPrint(pos, nlangs)}{}
-\If{pos == 0} print "H"
-\ElsIf{pos == 1} print "e"
-\ElsIf{pos == 2} print "l" 
-\ElsIf{pos == 3} print "l"
-\ElsIf{pos == 4} print "o"
-\ElsIf{pos == 5} print " "
-\ElsIf{pos == 6} print "W"
-\ElsIf{pos == 7} print "o"
-\ElsIf{pos == 8} print "r"
-\ElsIf{pos == 9} print "l" 
-\ElsIf{pos == 10} print "d"
-\ElsIf{pos == 11} print "!"
-\ElsIf{pos == 12} print "\texttt{\char`\\n}"
+\If{$pos == 0$}
+	\State print "H"
+\ElsIf{$pos == 1$} 
+	\State print "e"
+\ElsIf{$pos == 2$}
+	\State print "l" 
+\ElsIf{$pos == 3$}
+	\State print "l"
+\ElsIf{$pos == 4$}
+	\State print "o"
+\ElsIf{$pos == 5$}
+	\State print "\texttt{\char`\ }"
+\ElsIf{$pos == 6$}
+	\State print "W"
+\ElsIf{$pos == 7$}
+	\State print "o"
+\ElsIf{$pos == 8$}
+	\State print "r"
+\ElsIf{$pos == 9$}
+	\State print "l" 
+\ElsIf{$pos == 10$}
+	\State print "d"
+\ElsIf{$pos == 11$}
+	\State print "!"
+\ElsIf{$pos == 12$}
+	\State print "\texttt{\char`\\n}"
 \EndIf
 \EndProcedure
+\end{algorithmic}
+\end{algorithm}
+One important thing to notice is that after PartialPrint has been executed, the stdout has to be flushed. The reason for this is that we want each Executor's prints to be outputted to the same console.
 
+\begin{algorithm}
+\caption{Executor Algorithm Notify}
+\label{Special Edition}
+\begin{algorithmic}[2]
 \Procedure{Notify(pos, nlangs)}{}
 \If{pos \texttt{\char`\>=} 0 and pos \texttt{\char`\<} 12} \State $target\gets nlangs.head$
-\Else {    return 0}
+	\State $executors\gets nlangs.dropHead$	
+	\State Controller(target,  pos+1, executors)
+\Else
+	\State shutdown() 
 \EndIf
-\State $executors\gets nlangs.dropHead$
-\State Controller(target,  pos+1, executors)
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
 
+
+
+
 \subsection{Controller}
 The controller acts as a bridge between Executor's. After an Executor has printed a character, it notifies the controller of the next target language, position and the list that contains the Executor order.
+
+\begin{algorithm}
+\caption{Controller Algorithm}
+\label{Special Edition}
+\begin{algorithmic}[2]
+\Procedure{Proxy(target, pos, nlangs)}{}
+	\State Execute(Target).with(pos, nlangs)
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
 
 
 \section{Evaluation}
