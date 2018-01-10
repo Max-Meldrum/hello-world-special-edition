@@ -1,6 +1,6 @@
 %
 % File paper.tex
-
+% Copyright © 2018 Max Meldrum
 
 \documentclass[11pt]{article}
 \usepackage{acl2015}
@@ -14,6 +14,7 @@
 \usepackage{amsmath}
 \usepackage{algorithm}
 \usepackage{pifont}
+\usepackage{float}
 
 %\setlength\titlebox{5cm}
 
@@ -26,10 +27,7 @@
 \title{Hello World: Special Edition}
 
 \author{Max Meldrum \\
-{\tt max@meldrum.se} \\\And
-Second Author \\
-{\tt email@domain} \\}
-
+{\tt max@meldrum.se}}
 
 \makeatletter
 \def\BState{\State\hskip-\ALG@thistlm}
@@ -46,10 +44,15 @@ Since being introduced in the book "The C Programming Language", Hello World has
 \section{Introduction}
 Instructing the computer to display text on the screen is the most common first program that any developer will encounter. The concept of Hello World became popular through\cite{Kernighan:1988:CPL:576122}. Many years has past since its introduction, and still there has not been any further research into the language exposure aspect of Hello World.
 \newline{}\newline{}
-In section 2, the special edition algorithm is explained in detail. Section 3 dissects the performance and language exposure. In section 4, we discuss the possibilities of next gen Hello World programs. In Section 5, we draw our conclusion.
+The remainder of the paper introduces the special edition algorithm (Section 2), dissects the performance and language exposure (Section 3), discusses next generation Hello World programs (Section 4) and draws the conclusion (Section 5).
 
 \section{Algorithm}
-In our implementation, we have opted to go for "Hello World!" instead of "Hello, World!". In total, including the white space, we have 12 characters. Any number of languages is supported, as long it is able to compile on the target computer. It is not guaranteed that the 12 selected languages are unique, the algorithm will pick randomly from a basket.
+In our reference implementation\footnote{https://github.com/Max-Meldrum/hello-world-special-edition/}, we elected to go for "Hello World!" rather than "Hello, World!". In total, including the white space, we have 12 characters. It is possible to connect any amount of languages. However, it is not guaranteed that the 12 selected languages will be unique. The algorithm will pick randomly from a basket.
+\newline{}\newline{}
+Special Edition can be understood by describing its two phases. In phase 1 (initialization phase), there is a confirmation step that compilers of the specified languages are available. If examination goes through without any issues, all languages are inserted in to a List, which is then used to generate another list with 12 random languages. One important thing to note is that there is no requirement for the amount of languages. If Python, C and Java are selected, the algorithm will simply pick randomly from the three until it has a total of 12.
+\newline{}\newline{}
+A prerequisite for Special Edition is the capability of executing system calls. Executor's (see 2.1) utilises system calls to pass on the next task to the Controller (see 2.2).
+
 \begin{algorithm}
 \caption{Initialization Phase}
 \label{Special Edition}
@@ -66,12 +69,14 @@ In our implementation, we have opted to go for "Hello World!" instead of "Hello,
 \end{algorithm}
 
 \subsection{Executor}
-The Executor program has two tasks. PartialPrint and Notify. The former checks if the given character position is valid, if it is, it then prints the character that corresponds to the position. The latter reviews the current position and decides whether to pass on the task to the next Executor in line or exit the system.
-
-\begin{algorithm}
+The Executor system has two tasks. PartialPrint and Notify. The former checks if the given character position is valid, if it is, it then prints the character that corresponds to the position. The latter reviews the current position and decides whether to pass on the task via the Controller or exit the system.
+\newline{}\newline{}
+For the final output to be outputted correctly, the buffered stdout has to be flushed after every print operation.
+\vfill
+\begin{algorithm}[H]
 \caption{Executor Algorithm PP}
 \label{Special Edition}
-\begin{algorithmic}[2]
+\begin{algorithmic}[t]
 \Procedure{PartialPrint(pos, nlangs)}{}
 \If{$pos == 0$}
 	\State print "H"
@@ -103,12 +108,11 @@ The Executor program has two tasks. PartialPrint and Notify. The former checks i
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
-One important thing to notice is that after PartialPrint has been executed, the stdout has to be flushed. The reason for this is that we want each Executor's prints to be outputted to the same console.
 
-\begin{algorithm}
-\caption{Executor Algorithm Notify}
+\begin{algorithm}[H]
+\caption{Executor Notify}
 \label{Special Edition}
-\begin{algorithmic}[2]
+\begin{algorithmic}[t]
 \Procedure{Notify(pos, nlangs)}{}
 \If{pos \texttt{\char`\>=} 0 and pos \texttt{\char`\<} 12} \State $target\gets nlangs.head$
 	\State $executors\gets nlangs.dropHead$	
@@ -119,18 +123,17 @@ One important thing to notice is that after PartialPrint has been executed, the 
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
-
-
-
-
+\raggedbottom
 \subsection{Controller}
-The controller acts as a bridge between Executor's. After an Executor has printed a character, it notifies the controller of the next target language, position and the list that contains the Executor order.
+The controller acts as a bridge between Executor's. After an Executor has printed a character, it notifies the controller of the next target language, position and the list that contains the Executor order. With this information, the bridge acts like a proxy and runs the new Executor. The controller can be implemented in any language that has basic features. A shell script is used in the reference implementation.
+\vfill
+\raggedbottom
 
-\begin{algorithm}
+\begin{algorithm}[H]
 \caption{Controller Algorithm}
 \label{Special Edition}
 \begin{algorithmic}[2]
-\Procedure{Proxy(target, pos, nlangs)}{}
+\Procedure{Bridge(target, pos, nlangs)}{}
 	\State Execute(Target).with(pos, nlangs)
 \EndProcedure
 \end{algorithmic}
