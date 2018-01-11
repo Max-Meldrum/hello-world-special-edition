@@ -3,6 +3,8 @@
 #include <stdlib.h>
 
 
+void partialPrint(int);
+void notify(int, char*);
 
 int main(int argc, char *argv[]) {
     char *langs;
@@ -13,53 +15,59 @@ int main(int argc, char *argv[]) {
         langs = argv[2];
         if (pos > 12)
             return EXIT_FAILURE;
-    } else {
-        return EXIT_FAILURE;
+        partialPrint(pos);
+        notify(pos, langs);
+    }
+    return 0;
+}
+
+
+
+void partialPrint(int pos) {
+    if (pos == 0) {
+        printf("%s", "H");
+    } else if (pos == 1) {
+        printf("%s", "e");
+    } else if (pos == 2) {
+        printf("%s", "l");
+    } else if (pos == 3) {
+        printf("%s", "l");
+    } else if (pos == 4) {
+        printf("%s", "o");
+    } else if (pos == 5) {
+        printf("%s", " ");
+    } else if (pos == 6) {
+        printf("%s", "W");
+    } else if (pos == 7) {
+        printf("%s", "o");
+    } else if (pos == 8) {
+        printf("%s", "r");
+    } else if (pos == 9) {
+        printf("%s", "l");
+    } else if (pos == 10) {
+        printf("%s", "d");
+    } else if (pos == 11) {
+        printf("%s", "!");
+    } else if (pos == 12) {
+        printf("%s", "\n");
     }
 
-
-	if (pos == 0) {
-		printf("%s", "H");
-	} else if (pos == 1) {
-		printf("%s", "e");
-	} else if (pos == 2) {
-		printf("%s", "l");
-	} else if (pos == 3) {
-		printf("%s", "l");
-	} else if (pos == 4) {
-		printf("%s", "o");
-	} else if (pos == 5) {
-		printf("%s", " ");
-	} else if (pos == 6) {
-		printf("%s", "W");
-	} else if (pos == 7) {
-		printf("%s", "o");
-	} else if (pos == 8) {
-		printf("%s", "r");
-	} else if (pos == 9) {
-		printf("%s", "l");
-	} else if (pos == 10) {
-		printf("%s", "d");
-	} else if (pos == 11) {
-		printf("%s", "!");
-	} else if (pos == 12) {
-		printf("%s", "\n");
-	}
-
     fflush(stdout);
+}
 
-	if (pos >= 0 || pos <= 11) {
+void notify(int pos, char* nlangs) {
+    if (pos >= 0 || pos <= 11) {
         if (pos >= 10) {
             char cmd[100];
             char lLang[250];
             strcpy(lLang, "\'");
-            strcat(lLang, langs);
+            strcat(lLang, nlangs);
             strcat(lLang, "\'");
             sprintf(cmd, "./controller.sh %s %d %s", lLang, pos+1, lLang);
             system(cmd);
         } else {
             // Get next target lang and execute logic.sh
-            char *targetLang = strtok(langs, " ");
+            char *targetLang = strtok(nlangs, " ");
             char nextLangs[500];
 
             char *nlang = strtok(NULL, " ");
@@ -81,7 +89,7 @@ int main(int argc, char *argv[]) {
             sprintf(cmd, "./controller.sh %s %d %s", targetLang, pos+1, nextLangs);
             system(cmd);
         }
-	}
+    }
 
-    return 0;
 }
+

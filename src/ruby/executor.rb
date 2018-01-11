@@ -2,7 +2,7 @@
 require 'open3'
 
 
-def partial_print(pos, nlangs)
+def partial_print(pos)
     if pos == 0
         print "H"
     elsif pos == 1
@@ -42,6 +42,7 @@ def notify(pos, nlangs)
               executors << splitted[index].inspect.to_s.gsub('"','') + " "
         end
         executors << "\""
+        executors.lstrip
         if pos == 10
             system("./controller.sh #{target} #{(pos+1).to_s} #{target}")
         else 
@@ -56,6 +57,6 @@ args = ARGV
 if args.length > 1
     pos = Integer(args[0])
     nlangs = args[1]
-    partial_print(pos, nlangs)
+    partial_print(pos)
     notify(pos, nlangs)
 end

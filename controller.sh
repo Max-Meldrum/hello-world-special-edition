@@ -13,5 +13,8 @@ case "$1" in
     python)
         python src/python/executor.py "$2" "$3"
         ;;
+    ruby)
+        ruby src/ruby/executor.rb "$2" "$3"
+        ;;
 esac
 
