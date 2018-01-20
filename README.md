@@ -7,13 +7,13 @@ An implementation of the "Hello World: Special Edition" [paper](./paper/hello_wo
 
 - [x] C
 - [x] Ruby
-- [] Python
-- [] Java
-- [] Scala
-- [] Lua
-- [] Erlang
-- [] Haskell
-- [] C++
+- [ ] Python
+- [ ] Java
+- [ ] Scala
+- [ ] Lua
+- [ ] Erlang
+- [ ] Haskell
+- [ ] C++
 
 
 **If you fancy to contribute to the code or paper, you will be added to the acknowledgements section of the paper.**
