@@ -76,7 +76,7 @@ The Executor system has two tasks. PartialPrint and Notify. The former checks if
 For the final output to be outputted correctly, the buffered stdout has to be flushed after every print operation.
 \vfill
 \begin{algorithm}[H]
-\caption{Executor Algorithm PP}
+\caption{Executor PP}
 \label{Special Edition}
 \begin{algorithmic}[t]
 \Procedure{PartialPrint(pos)}{}
@@ -127,7 +127,7 @@ For the final output to be outputted correctly, the buffered stdout has to be fl
 \end{algorithm}
 \raggedbottom
 \subsection{Controller}
-The controller acts as a bridge between Executor's. After an Executor has printed a character, it notifies the controller of the next target language, position and the list that contains the Executor order. With this information, the bridge acts like a proxy and runs the new Executor. The controller can be implemented in any language that has basic features. A shell script is used in the reference implementation.
+The controller acts as a bridge between Executor's. After an Executor has printed a character, it notifies the controller of the next target language, position and the list that contains the Executor order. With this information, the bridge acts like a proxy and runs the new Executor. The controller can be implemented in any language with basic functionalities. A shell script is used in the reference implementation.
 \vfill
 \raggedbottom
 
@@ -142,7 +142,8 @@ The controller acts as a bridge between Executor's. After an Executor has printe
 \end{algorithm}
 
 \section{Evaluation}
-The traditional Hello World program outpeforms the Special Edition version in runtime performance as there will be delays between each Executor instance. However, what we are interested in is the maximum amount of languages that can be connected.
+The traditional Hello World program outpeforms the Special Edition version in runtime performance as there will be delays between each Executor instance. However, what we are interested in is the maximum amount of languages that can be utilised.
+
 \includegraphics[scale=0.65]{img/exposure.png}
 
 
