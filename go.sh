@@ -46,7 +46,7 @@ gcc src/c/executor.c -o src/c/executor
 # gcc...
 
 #LANGS=("python" "ruby" "c" "java" "lua" "go" "scala" "asm")
-LANGS=("c" "python")
+LANGS=("c" "ruby")
 
 HELLO_WORLD_SIZE=12
 declare -a CHOSEN=()
