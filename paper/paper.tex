@@ -8,7 +8,7 @@
 \usepackage{url}
 \usepackage{latexsym}
 \usepackage{natbib}
-
+\usepackage{graphicx}
 
 \usepackage[noend]{algpseudocode}
 \usepackage{amsmath}
@@ -49,7 +49,7 @@ The remainder of the paper introduces the special edition algorithm (Section 2),
 \section{Algorithm}
 In our reference implementation\footnote{https://github.com/Max-Meldrum/hello-world-special-edition/}, we elected to go for "Hello World!" rather than "Hello, World!". In total, including the white space, we have 12 characters. It is possible to connect any amount of languages. However, it is not guaranteed that the 12 selected languages will be unique. The algorithm will pick randomly from a basket.
 \newline{}\newline{}
-Special Edition can be understood by describing its two phases. In phase 1 (initialization phase), there is a confirmation step that compilers of the specified languages are available. If examination goes through without any issues, all languages are inserted in to a List, which is then used to generate another list with 12 random languages. One important thing to note is that as long as you have one language available, you can run the program. If Python, C and Java are selected, the algorithm will simply pick randomly from the three until it has a total of 12.
+Special Edition can be understood by describing its two phases. In phase 1 (initialization phase), there is a confirmation step that compilers of the chosen languages are available. If the examination goes through without any issues, all languages are inserted in to a List, which is then used to generate another list with 12 random languages. One important thing to note is that as long as you have one language available, the algorithm will be able to run. If Python, C and Java are selected, the algorithm will simply pick randomly from the three until it has a total of 12.
 \newline{}\newline{}
 A prerequisite for Special Edition is the capability of executing system calls. Executor's (see 2.1) utilises system calls to pass on the next task to the Controller (see 2.2).
 
@@ -142,13 +142,14 @@ The controller acts as a bridge between Executor's. After an Executor has printe
 \section{Evaluation}
 The traditional Hello World program outpeforms the Special Edition version in runtime performance as there will be delays between each Executor instance. However, what we are interested in is the performance to language exposure ratio.
 
+
 \section{Future Work}
 Special Edition runs locally on the computer. One could improve the system to be capable of executing Hello World in a peer-to-peer fashion. A peer would be able to act as an Executor and a Controller. This would increase the language exposure immensely as the more computers that are connected to the network, the bigger chance we have of being exposed to more languages.
 
 \section{Conclusion}
-The traditional approach to Hello World is only executed with one language in mind. In this paper, we describe an improved version of Hello World named Special Edition which supports the execution to occur through multiple languages. We draw the conclusion that our version increases the level of language exposure at cost of performance. We believe that this is just first step into the next generation of Hello World programs.
+The traditional approach to Hello World is only executed with one language in mind. In this paper, we describe an improved version of Hello World named Special Edition which supports the execution to occur through multiple languages. We draw the conclusion that our version increases the level of language exposure at cost of performance. We believe that this is just the first step into the next generation of Hello World programs.
 
-\section*{Acknowledgments}
+%\section*{Acknowledgments}
 
 
 \bibliography{references}
