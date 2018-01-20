@@ -7,8 +7,8 @@ An implementation of the "Hello World: Special Edition" [paper](./paper/hello_wo
 
 - [x] C
 - [x] Ruby
-- [ ] Python
-- [ ] Java
+- [ ] Python (almost)
+- [ ] Java (almost)
 - [ ] Scala
 - [ ] Lua
 - [ ] Erlang
