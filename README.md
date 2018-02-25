@@ -9,6 +9,7 @@ An implementation of the "Hello World: Special Edition" [paper](./paper/hello_wo
 - [x] Ruby
 - [ ] Python (almost)
 - [ ] Java (almost)
+- [ ] Rust (almost)
 - [ ] Scala
 - [ ] Lua
 - [ ] Erlang

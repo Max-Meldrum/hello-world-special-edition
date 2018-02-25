@@ -16,5 +16,8 @@ case "$1" in
     ruby)
         ruby src/ruby/executor.rb "$2" "$3"
         ;;
+    rust)
+        ./src/rust/executor "$2" "$3"
+        ;;
 esac
 

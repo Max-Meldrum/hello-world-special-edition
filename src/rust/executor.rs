@@ -1,5 +1,6 @@
 use std::env;
 use std::io::{self, Write};
+use std::process::Command;
 
 
 fn main() {
@@ -59,6 +60,30 @@ fn partial_print(pos: i32) -> () {
 }
 
 fn notify(pos: i32, nlangs: &String) -> () {
-    println!("{}",nlangs);
-    println!("{}",pos);
+    if pos >= 0 && pos < 12 {
+        let langs: Vec<&str> = nlangs.split_whitespace().collect();
+        let target = langs[0];
+        let mut new_langs = String::new().to_owned();
+        for i in 1..langs.len() {
+            let tmp: &str = langs[i];
+            new_langs.push_str(tmp);
+            new_langs.push_str(" ");
+        }
+
+        if pos == 10 {
+            Command::new("./controller.sh")
+                .arg(target)
+                .arg((pos+1).to_string())
+                .arg(target)
+                .spawn()
+                .expect("failed");
+        } else {
+            Command::new("./controller.sh")
+                .arg(target)
+                .arg((pos+1).to_string())
+                .arg(new_langs)
+                .spawn()
+                .expect("failed");
+        }
+    }
 }
